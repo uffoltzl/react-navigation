@@ -77,6 +77,10 @@ type Props = {
    */
   accessibilityLabel?: string;
   /**
+   * The accessibility hint for the tab.
+   */
+  accessibilityHint?: string;
+  /**
    * An unique ID for testing for the tab.
    */
   testID?: string;
@@ -166,6 +170,7 @@ export function BottomTabItem({
   badgeStyle,
   button = renderButtonDefault,
   accessibilityLabel,
+  accessibilityHint,
   testID,
   onPress,
   onLongPress,
@@ -340,6 +345,7 @@ export function BottomTabItem({
         onLongPress,
         testID,
         'aria-label': accessibilityLabel,
+        accessibilityHint,
         'accessibilityLargeContentTitle': labelString,
         'accessibilityShowsLargeContentViewer': true,
         // FIXME: role: 'tab' doesn't seem to work as expected on iOS

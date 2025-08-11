@@ -431,6 +431,12 @@ export function BottomTabBar({
           const accessibilityLabel =
             options.tabBarAccessibilityLabel !== undefined
               ? options.tabBarAccessibilityLabel
+              : typeof label === 'string'
+                ? label
+                : undefined;
+          const accessibilityHint =
+            options.tabBarAccessibilityHint !== undefined
+              ? options.tabBarAccessibilityHint
               : typeof label === 'string' && Platform.OS === 'ios'
                 ? `${label}, tab, ${index + 1} of ${routes.length}`
                 : undefined;
@@ -453,6 +459,7 @@ export function BottomTabBar({
                   onPress={onPress}
                   onLongPress={onLongPress}
                   accessibilityLabel={accessibilityLabel}
+                  accessibilityHint={accessibilityHint}
                   testID={options.tabBarButtonTestID}
                   allowFontScaling={options.tabBarAllowFontScaling}
                   activeTintColor={tabBarActiveTintColor}
