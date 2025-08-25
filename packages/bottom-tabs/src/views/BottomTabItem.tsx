@@ -72,6 +72,15 @@ type Props = {
    */
   accessibilityLabel?: string;
   /**
+   * The accessibility value for the tab.
+   */
+  accessibilityValue?: {
+    text?: string;
+    min?: number;
+    max?: number;
+    now?: number;
+  };
+  /**
    * An unique ID for testing for the tab.
    */
   testID?: string;
@@ -161,6 +170,7 @@ export function BottomTabItem({
   badgeStyle,
   button = renderButtonDefault,
   accessibilityLabel,
+  accessibilityValue,
   testID,
   onPress,
   onLongPress,
@@ -335,10 +345,11 @@ export function BottomTabItem({
         onLongPress,
         testID,
         'aria-label': accessibilityLabel,
+        accessibilityValue,
         'accessibilityLargeContentTitle': labelString,
         'accessibilityShowsLargeContentViewer': true,
         // FIXME: role: 'tab' doesn't seem to work as expected on iOS
-        'role': Platform.select({ ios: 'button', default: 'tab' }),
+        'role': Platform.select({ ios: 'none', default: 'tab' }),
         'aria-selected': focused,
         'android_ripple': { borderless: true },
         'hoverEffect':
